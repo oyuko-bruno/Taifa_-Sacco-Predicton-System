@@ -1,0 +1,17 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="djangoProject1.views.home.views" />
+          <option value="turtle.pendown.read_csv" />
+          <option value="mainTrain.image_width" />
+          <option value="mainTrain.image_height" />
+          <option value="mainTrain.n" />
+          <option value="mainTrain.n_channel" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

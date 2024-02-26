@@ -1,0 +1,573 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Taifa Sacco </title>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-GLhlTQ8iN17Sme8kATtZ8z9HgB2IbrJDOONT7vo1OqU/E15I6ZuPmXzme17FBo" crossorigin="anonymous">
+
+<!-- bootstrap core css -->
+
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+<!-- fonts awesome style -->
+
+<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+<!-- fonts style -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,500,700&display=swap" rel="stylesheet" />
+
+<!-- Custom styles for this template -->
+
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<!-- responsive style -->
+
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+</head>
+<style>
+html, body {
+min-height: 100%;
+}
+body, div, form, input, select, p {
+padding: 0;
+margin: 0;
+outline: none;
+font-family: Roboto, Arial, sans-serif;
+font-size: 14px;
+color: #666;
+}
+h1 {
+margin: 0;
+font-weight: 400;
+}
+h3 {
+margin: 12px 0;
+color: #8ebf42;
+}
+.main-block {
+display: flex;
+justify-content: center;
+align-items: center;
+background: #fff;
+}
+form {
+width: 100%;
+padding: 20px;
+}
+fieldset {
+border: none;
+border-top: 1px solid #8ebf42;
+}
+.account-details, .personal-details {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
+.account-details >div, .personal-details >div >div {
+display: flex;
+align-items: center;
+margin-bottom: 10px;
+}
+.account-details >div, .personal-details >div, input, label {
+width: 100%;
+}
+label {
+padding: 0 5px;
+text-align: right;
+vertical-align: middle;
+}
+input {
+padding: 5px;
+vertical-align: middle;
+}
+.checkbox {
+margin-bottom: 10px;
+}
+select, .children, .gender, .bdate-block {
+width: calc(100% + 26px);
+padding: 5px 0;
+}
+select {
+background: transparent;
+}
+.gender input {
+width: auto;
+}
+.gender label {
+padding: 0 5px 0 0;
+}
+.bdate-block {
+display: flex;
+justify-content: space-between;
+}
+.birthdate select.day {
+width: 35px;
+}
+.birthdate select.mounth {
+width: calc(100% - 94px);
+}
+.birthdate input {
+width: 38px;
+vertical-align: unset;
+}
+.checkbox input, .children input {
+width: auto;
+margin: -2px 10px 0 0;
+}
+.checkbox a {
+color: #8ebf42;
+}
+.checkbox a:hover {
+color: #82b534;
+}
+button {
+width: 100%;
+padding: 10px 0;
+margin: 10px auto;
+border-radius: 5px;
+border: none;
+background: #8ebf42;
+font-size: 14px;
+font-weight: 600;
+color: #fff;
+}
+button:hover {
+background: #82b534;
+}
+@media (min-width: 568px) {
+.account-details >div, .personal-details >div {
+width: 50%;
+}
+label {
+width: 40%;
+}
+input {
+width: 60%;
+}
+select, .children, .gender, .bdate-block {
+width: calc(60% + 16px);
+}
+}
+
+  .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .loading-spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 50%; /* Adjust the width as needed */
+            height: 100%;
+            background-image: url('{% static "curve.PNG" %}') center/cover no-repeat; /* Replace with your image path */
+            z-index: 999; /* Ensure it's above other elements */
+        }
+         /* Add your custom styles here */
+        .checkbox {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox img {
+            margin-left: 20px;  /* Adjust the margin as needed */
+            width: 40px;  /* Set the width of the image */
+            height: 40px;  /* Set the height of the image */
+        }
+</style>
+<script>
+    function toggleSubmit() {
+        var checkbox = document.getElementById('termsCheckbox');
+        var submitButton = document.getElementById('submitButton');
+
+        submitButton.disabled = !checkbox.checked;
+    }
+</script>
+</head>
+<body>
+  <a href="{% url 'authentication:update_account' %}" style="display: inline-block;
+  padding: 10px 15px;
+  margin: 5px;
+  text-decoration: none;
+  color: #fff;
+  background-color:#649713 ; /* Button color */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;">Update Profile</a>
+
+  <a href="{% url 'authentication:delete_account' %}" style="display: inline-block;
+  padding: 10px 15px;
+  margin: 5px;
+  text-decoration: none;
+  color:white;
+  background-color: #649713; /* Button color */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;">Delete Profile</a>
+
+
+  <a href="{% url 'view_saved_predictions' %}" style="display: inline-block;
+  padding: 10px 15px;
+  margin: 5px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #649713; /* Button color */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;">Predictions</a>
+
+
+<a href="{% url 'logout' %}" style="display: inline-block;
+  padding: 10px 15px;
+  margin: 5px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #649713; /* Button color */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;">Logout</a>
+
+  
+
+  <style>
+    /* Add your custom styles here */
+
+    a:hover {
+        background-color: green; /* Button color on hover */
+    }
+</style>
+<div class="main-block">
+
+    
+    <form action="{% url 'loan_prediction' %}" method="get" onsubmit="showLoading() " onsubmit="return validateForm()">
+       
+
+        <h5 id="user.get_full_name ">Welcome {{ user.get_full_name }}!</h5>
+<fieldset>
+<legend>
+<h3>Loan Application Form</h3>
+</legend>
+<div class="account-details">
+    
+<div><label for="n2">Married</label>
+ <select name="n2" id="n2" required>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            
+        </select>
+
+</div>
+
+<div>
+    <label for="n1">Gender</label>
+    <select name="n1" id="n1" required>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+        </select>
+</div>
+
+
+<div>
+        <label for="n3">Dependents</label>
+    <select name="n3" id="n3" required>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            
+        </select>
+</div>
+<!--
+<div>
+    <label for="n4">Level of Education</label>
+    <select name="n4" id="n4" required>
+            <option value="1">Graduate</option>
+            <option value="0">Not Graduate</option>
+            
+        </select>
+</div>
+-->
+    <div>
+     <label for="n5">Self Employed :</label>
+        <select name="n5" id="n5" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        
+          
+
+        </select>
+</div>
+<!--
+    <div>
+       <label for="n7">Other Income ($):</label>
+       <input type="number" min="1" name="n7" id="n7" required>
+
+    </div>
+-->
+     <div>
+        <label for="n6">Your Income ($):</label>
+
+         <input type="number" min="1"  name="n6" id="n6" required>
+
+    </div>
+
+    <div>
+ <label for="n8">Loan Amount ($) </label>
+
+           <input type="number" min="1"  max="30000" name="n8" id="n8" required>
+    </div>
+
+      <div>
+        <label for="n9">Repayment  Term(Days):</label>
+        <input type="number" min="0" max="500" name="n9" id="n9" required>
+
+    </div>
+
+    <div>
+        <label for="n10"> Credit_History:</label>
+           <select name="n10" id="n10" required>
+               <option value="1">Yes</option>
+               <option value="0">No</option>
+             
+   
+           </select>
+   </div>
+
+   <div>
+    <label for="n11"> Property Area Location:</label>
+       <select name="n11" id="n11" required>
+        <option value="0">Rural</option>
+           <option value="2">Urban</option>
+           <option value="1">Semiurban</option>
+          
+
+         
+
+       </select>
+</div>
+
+<div>
+  <label for="n12"> Collateral:</label>
+     <select name="n12" id="n12" required>
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+        
+
+       
+
+     </select>
+</div>
+
+<div>
+  <label for="n13">  Government_Program:</label>
+     <select name="n13" id="n13" required>
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+        
+
+       
+
+     </select>
+</div>
+
+<div>
+  <label for="n14"> Loan_Purpose:</label>
+     <select name="n14" id="n14" required>
+      <option value="2"> Covering_operations_expenses	</option>
+         <option value="1">Expanding_operations	</option>
+         <option value="0">Purchase_equipment</option>
+        
+
+       
+
+     </select>
+</div>
+
+<div>
+  <label for="n15">  Local_Economic_Factors :</label>
+     <select name="n15" id="n15" required>
+      <option value="1">Rainy</option>
+      <option value="0">Drought</option>
+      
+     </select>
+</div>
+
+<div>
+  <label for="n16">  Risk_Management_Strategies :</label>
+     <select name="n16" id="n16" required>
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+      
+     </select>
+</div>
+
+</div>
+
+</fieldset>
+<fieldset>
+<legend>
+   
+<h3>Terms </h3>
+</legend>
+<div class="terms-mailing">
+<div class="checkbox">
+    <input type="checkbox" id="termsCheckbox" name="checkbox" onchange="toggleSubmit()">Privacy Policy for Taifa Sacco.
+            </div>
+</div>
+<div class="checkbox">
+<!--<input type="checkbox" name="checkbox"><span>I want to recelve personallzed offers by your site</span>-->
+
+{% if result %}
+<h3 style="text-align: center;color: black;">{{ result }}</h3>
+
+<!-- Display icons based on the result -->
+{% if result == ' Your Loan request is Approved' %}
+    <!-- Display a tick icon for approval -->
+    <img src="{% static 'tick.png' %}" alt="Approved Icon">
+{% elif result == 'Your Loan request is Rejected' %}
+    <!-- Display an X icon for rejection -->
+    <img src="{% static 'x.png' %}" alt="Rejected Icon">
+{% endif %}
+{% endif %}
+</div>
+</fieldset>
+<button type="submit" id="submitButton" disabled>Submit</button>
+
+      </form>
+<div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-spinner"></div>
+        </div>
+    
+
+</div>
+<script>
+  document.getElementById("submit-button").addEventListener("click", function() {
+      this.disabled = true;
+      document.getElementById("prediction-form").submit();
+  });
+  </script>
+  
+
+<!--<div class="background-image"></div>-->
+<script>
+        function showLoading() {
+            document.getElementById('loadingOverlay').style.display = 'flex';
+        }
+
+        
+        
+      </script>
+
+
+<img src="{% static 'Model comparison.PNG' %}" alt="Rejected Icon">
+<img src="{% static 'comparison.PNG' %}" alt="Rejected Icon">
+<section class="info_section layout_padding2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="info_contact">
+            <h5>
+              Address
+            </h5>
+            <div class="contact_link_box">
+              <a href="">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span>
+                  Location
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                  Call 0792761073
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>
+                  taifasacco@gmail.com
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="info_social">
+            <a href="">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="info_link_box">
+            <h5>
+              Navigation
+            </h5>
+            <div class="info_links">
+              <a class="active" href="index.html"> <i class="fa fa-angle-right" aria-hidden="true"></i> Home <span class="sr-only">(current)</span></a>
+              <a class="" href="about.html"> <i class="fa fa-angle-right" aria-hidden="true"></i> About</a>
+              <a class="" href="why.html"> <i class="fa fa-angle-right" aria-hidden="true"></i> Why Us </a>
+              <a class="" href="team.html"> <i class="fa fa-angle-right" aria-hidden="true"></i> Our Team</a>
+              <a class="" href="testimonial.html"> <i class="fa fa-angle-right" aria-hidden="true"></i> Testimonial</a>
+              <a class="" href="contact.html"> <i class="fa fa-angle-right" aria-hidden="true"></i> Contact Us</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h5>
+            Newsletter
+          </h5>
+          <form action="">
+            <input type="text" placeholder="Enter Your email" />
+            <button type="submit">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- end info section -->
+  
+  <!-- footer section -->
+  <footer class="footer_section container-fluid">
+    <p>
+      &copy; <span id="displayYear"></span> All Rights Reserved. Developed By
+      <a href="https://developer-fullstack.netlify.app/">Bruno</a>
+    </p>
+  </footer>
+  <!-- footer section -->
+  
+  
+  <script src="{% static 'js/jquery-3.4.1.min.js' %} "></script>
+  <script src="{% static 'js/bootstrap.js' %} "></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="{% static 'js/custom.js' %} "></script>
+  
+  
+</body>
+</html>
+

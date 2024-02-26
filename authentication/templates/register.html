@@ -1,0 +1,16 @@
+<!-- registration.html -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" action="{% url 'register' %}" class="form-signin">
+                {% csrf_token %}
+                <h2 class="mb-4">Register</h2>
+                {{ form.username }}
+                {{ form.email }}
+                {{ form.password1 }}
+                {{ form.password2 }}
+                <button type="submit" class="btn btn-lg btn-success btn-block">Register</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<!-- prediction_report.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Report</title>
+    <!-- Add your styles if needed -->
+</head>
+<body>
+    <h1>Prediction Report</h1>
+
+    {% if predictions %}
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Loan Status</th>
+            </tr>
+            {% for prediction in predictions %}
+                <tr>
+                    <td>{{ prediction.user.username }}</td>
+                    <td>{{ prediction.user.email }}</td>
+                    <td>{{ prediction.result }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No predictions have been made yet.</p>
+    {% endif %}
+
+    <a href="{% url 'predict' %}">Go back to Predict</a>
+</body>
+</html>

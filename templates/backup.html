@@ -1,0 +1,312 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Taifa Sacco </title>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<style>
+html, body {
+min-height: 100%;
+}
+body, div, form, input, select, p {
+padding: 0;
+margin: 0;
+outline: none;
+font-family: Roboto, Arial, sans-serif;
+font-size: 14px;
+color: #666;
+}
+h1 {
+margin: 0;
+font-weight: 400;
+}
+h3 {
+margin: 12px 0;
+color: #8ebf42;
+}
+.main-block {
+display: flex;
+justify-content: center;
+align-items: center;
+background: #fff;
+}
+form {
+width: 100%;
+padding: 20px;
+}
+fieldset {
+border: none;
+border-top: 1px solid #8ebf42;
+}
+.account-details, .personal-details {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
+.account-details >div, .personal-details >div >div {
+display: flex;
+align-items: center;
+margin-bottom: 10px;
+}
+.account-details >div, .personal-details >div, input, label {
+width: 100%;
+}
+label {
+padding: 0 5px;
+text-align: right;
+vertical-align: middle;
+}
+input {
+padding: 5px;
+vertical-align: middle;
+}
+.checkbox {
+margin-bottom: 10px;
+}
+select, .children, .gender, .bdate-block {
+width: calc(100% + 26px);
+padding: 5px 0;
+}
+select {
+background: transparent;
+}
+.gender input {
+width: auto;
+}
+.gender label {
+padding: 0 5px 0 0;
+}
+.bdate-block {
+display: flex;
+justify-content: space-between;
+}
+.birthdate select.day {
+width: 35px;
+}
+.birthdate select.mounth {
+width: calc(100% - 94px);
+}
+.birthdate input {
+width: 38px;
+vertical-align: unset;
+}
+.checkbox input, .children input {
+width: auto;
+margin: -2px 10px 0 0;
+}
+.checkbox a {
+color: #8ebf42;
+}
+.checkbox a:hover {
+color: #82b534;
+}
+button {
+width: 100%;
+padding: 10px 0;
+margin: 10px auto;
+border-radius: 5px;
+border: none;
+background: #8ebf42;
+font-size: 14px;
+font-weight: 600;
+color: #fff;
+}
+button:hover {
+background: #82b534;
+}
+@media (min-width: 568px) {
+.account-details >div, .personal-details >div {
+width: 50%;
+}
+label {
+width: 40%;
+}
+input {
+width: 60%;
+}
+select, .children, .gender, .bdate-block {
+width: calc(60% + 16px);
+}
+}
+
+  .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .loading-spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+</style>
+</head>
+<body>
+<div class="main-block">
+
+    
+    <form action="{% url 'loan_prediction' %}" method="get" onsubmit="showLoading()">
+
+        <h2>Welcome {{ user.get_full_name }}!</h2>
+<fieldset>
+<legend>
+<h3>Loan Application Form</h3>
+</legend>
+<div class="account-details">
+<div><label for="n1">Married</label>
+ <select name="n1" id="n1" required>
+            <option value="Senior">Senior</option>
+            <option value="Student">Student</option>
+            <option value="Adult">Adult</option>
+            <option value="Young">Young</option>
+        </select>
+
+</div>
+
+<div>
+    <label for="n2">Sex*</label>
+    <select name="n2" id="n2" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+</div>
+
+
+<div>
+        <label for="n3">Job Type</label>
+    <select name="n3" id="n3" required>
+            <option value="Unskilled & Non-resident">Unskilled & Non-resident</option>
+            <option value="Unskilled & Resident">Unskilled & Resident</option>
+            <option value="Skilled">Skilled</option>
+            <option value="Highly Skilled">Highly Skilled</option>
+        </select>
+</div>
+
+<div>
+    <label for="n4">Home Ownership</label>
+    <select name="n4" id="n4" required>
+            <option value="own">Own</option>
+            <option value="free">Free</option>
+            <option value="rent">Rent</option>
+        </select>
+</div>
+
+    <div>
+     <label for="n5">Saving accounts Balance:</label>
+        <select name="n5" id="n5" required>
+            <option value="moderate">Moderate</option>
+            <option value="nan">Nun</option>
+            <option value="little">Little</option>
+            <option value="quite rich">Quite Rich</option>
+            <option value="rich">Rich</option>
+
+        </select>
+</div>
+
+    <div>
+       <label for="n6">Checking account Balance:</label>
+        <select name="n6" id="n6" required>
+            <option value="little">Little</option>
+            <option value="moderate">Moderate</option>
+            <option value="nan">Nun</option>
+            <option value="rich">Rich</option>
+        </select>
+
+    </div>
+
+     <div>
+        <label for="n7">Credit Amount:</label>
+
+         <input type="number" min="400" max="20000" name="n7" id="n7" required>
+
+    </div>
+
+    <div>
+ <label for="n8">Duration:Months</label>
+
+           <input type="number" min="1" max="60" name="n8" id="n8" required>
+    </div>
+
+      <div>
+        <label for="n9">Purpose For the Loan:</label>
+        <select name="n9" id="n9" required>
+            <option value="radio/TV">Radio/TV</option>
+            <option value="education">Education</option>
+            <option value="furniture/equipment">Furniture/Equipment</option>
+            <option value="car">Car</option>
+            <option value="business">Business</option>
+            <option value="domestic appliances">Domestic Appliances</option>
+            <option value="repairs">Repairs</option>
+            <option value="vacation/others">Vacation/Others</option>
+        </select>
+
+    </div>
+</div>
+
+</fieldset>
+<fieldset>
+<legend>
+
+<h3>Terms and Mailing</h3>
+</legend>
+<div class="terms-mailing">
+<div class="checkbox">
+    <input type="checkbox" name="checkbox">Privacy Policy for Taifa Sacco.</div>
+</div>
+<div class="checkbox">
+<input type="checkbox" name="checkbox"><span>I want to recelve personallzed offers by your site</span>
+</div>
+</fieldset>
+<button type="submit" href="/">Submit</button>
+      </form>
+<div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-spinner"></div>
+        </div>
+    {% if result %}
+        <h3>{{ result }}</h3>
+    {% endif %}
+    
+
+</div>
+
+<div class="background-image"></div>
+    <style>
+        /* Add this style block to your existing styles */
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 50%; /* Adjust the width as needed */
+            height: 100%;
+            background-image: url('{% static "curve.PNG" %}') center/cover no-repeat; /* Replace with your image path */
+            z-index: 999; /* Ensure it's above other elements */
+        }
+        
+    </style>
+<script>
+        function showLoading() {
+            document.getElementById('loadingOverlay').style.display = 'flex';
+        }
+    </script>
+
+
+</body>
+</html>
+

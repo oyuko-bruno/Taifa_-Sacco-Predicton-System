@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Predictions</title>
+</head>
+<body>
+    <h1>All Predictions</h1>
+    <ul>
+        {% for prediction in predictions %}
+            <li>Result: {{ prediction.result }} - Date: {{ prediction.date_created }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
