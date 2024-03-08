@@ -36,7 +36,19 @@
   
   <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
 </head>
-
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/64479d7131ebfa0fe7fa4aac/1gurru1lr';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 <body>
   <style>
     /* static/css/style.css */
@@ -61,7 +73,7 @@
             <a href="">
               <i class="fa fa-map-marker" aria-hidden="true"></i>
               <span>
-                Address :Nyeri County
+                Taifa Sacco
               </span>
             </a>
             <a href="">
@@ -107,17 +119,34 @@
           </div>
           <a class="navbar-brand" href="index.html">
             <span>
-              Taifa Sacco 
+              
             </span>
           </a>
+
+          <span>
+            
+            <a href="{% url 'authentication:ourservice'%}">Services</a>
+          </span>
+
+          <span>
+           
+            <a href="{% url 'authentication:ourmembers'%}"> Membership</a>
+          </span>
+
+          <span>
+           
+            <a href="{% url 'authentication:login' %}"> Our Products</a>
+          </span>
+
           <div class="user_option">
+           
             <a href="{% url 'authentication:login' %}">
               <span>
                 Login
               </span>
               <i class="fa fa-user" aria-hidden="true"></i>
             </a>
-            
+           
           </div>
         </nav>
       </div>

@@ -42,20 +42,21 @@ from . import views
 from django.urls import include, path
 from .views import loan_prediction, view_saved_predictions,prediction_report
 from .views import custom_logout
-from .views import chat
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-   # path('', views.home ,name='home'),
-    #path('loan_prediction/', loan_prediction, name='loan_prediction'),
+    path('', views.home ,name='home'),
+    path('loan_prediction/', loan_prediction, name='loan_prediction'),
     path('predict/', views.predict, name='predict'),
     path('predict/loan_prediction/', views.loan_prediction, name='loan_prediction'),
     path('authentication/', include('authentication.urls'), name='authentication'),
     path('saved/', view_saved_predictions, name='view_saved_predictions'),
     path('report/', prediction_report, name='prediction_report'),
     path('logout/', custom_logout, name='logout'),
+ 
     
-    path('', chat, name='chat'),
+   
 
    
  # Add a name for the result view

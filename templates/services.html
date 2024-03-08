@@ -1,5 +1,3 @@
-
-
 {% load  static %}
 <!DOCTYPE html>
 <html>
@@ -15,7 +13,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Taifa Sacco</title>
+  <title>Taifa Sacco Junior account</title>
 
   <!--owl slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
@@ -37,20 +35,22 @@
   
   <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
 </head>
-
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/64479d7131ebfa0fe7fa4aac/1gurru1lr';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 <body>
-  <style>
-    /* static/css/style.css 
 
-.hero_area {
-    background-image: url('{% static "taifa4.PNG" %}');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh; /* Adjust the height as needed 
-}*/
 
-/* Add any additional styles for other elements on the page */
 
   </style>
   <div class="hero_area">
@@ -62,7 +62,7 @@
             <a href="">
               <i class="fa fa-map-marker" aria-hidden="true"></i>
               <span>
-                Address :Nyeri County
+                Taifa Sacco
               </span>
             </a>
             <a href="">
@@ -108,43 +108,114 @@
           </div>
           <a class="navbar-brand" href="index.html">
             <span>
-              Taifa Sacco 
+              
             </span>
           </a>
+
+          <span>
+            
+            <a href="{% url 'authentication:ourservice'%}">Services</a>
+          </span>
+
+          <span>
+           
+            <a href="{% url 'authentication:ourmembers'%}"> Membership</a>
+          </span>
+
+          <span>
+           
+            <a href="{% url 'authentication:user_login' %}"> Our Products</a>
+          </span>
+
           <div class="user_option">
+           
             <a href="{% url 'authentication:user_login' %}">
               <span>
                 Login
               </span>
               <i class="fa fa-user" aria-hidden="true"></i>
             </a>
-            
+           
           </div>
         </nav>
       </div>
     </header>
-    <h5>Update Profile</h5>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
 
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
+        h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="section">
+        <h4>OTHER SERVICES</h4>
+        <p>Home OTHER SERVICES</p>
+    </div>
+
+    <div class="section">
+        <h4>MOBILE BANKING SERVICES</h4>
+        <p>Suitable for all individuals account holders</p>
+        <ul>
+            <li>Easy, efficient and convenient</li>
+            <li>Safe and secure</li>
+            <li>Easy to use</li>
+            <li>Affordable</li>
         </ul>
-    {% endif %}
+    </div>
 
-    <form method="post" action="{% url 'authentication:update_account' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit"  style="display: inline-block;
-        padding: 10px 15px;
-        margin: 5px;
-        text-decoration: none;
-        color:white;
-        background-color: #649713; /* Button color */
-        border-radius: 5px;
-        transition: background-color 0.3s ease;">Update Account</button>
-    </form>
+    <div class="section">
+        <h4>CHEQUE BOOK</h4>
+        <p>We at Taifa ensure issuance of cheque books to business, company, and groups.</p>
+        <ul>
+            <li>Saves Time</li>
+            <li>Safe and secure mode of payment</li>
+            <li>Easy to apply</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h4>CORPORATE SOCIAL RESPONSIBILITY (CSR)</h4>
+        <p>Corporate social responsibility (CSR) is one of our core values; we commit to manage the social, environmental, and economic effects of our operations responsibly and in line with public expectations. We also insist on working with partners who follow ethical business practices. Suitable for all individuals account holders. Activities we engage are:</p>
+        <ul>
+            <li>Cleaning towns</li>
+            <li>Sponsoring public sanitation projects</li>
+            <li>Visiting orphanages</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h4>ATM-SERVICES</h4>
+        <p>Suitable for all individuals account holders</p>
+        <ul>
+            <li>Easy, efficient and convenient</li>
+            <li>Safe and secure</li>
+            <li>Easy to use</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h4>KILIMO TEXT</h4>
+        <p>This is an information sharing product that enables farmers to receive updates on market availability, price, and other issues affecting agribusiness.</p>
+    </div>
 
     <section class="info_section layout_padding2">
         <div class="container">
@@ -239,5 +310,7 @@
       
       
     
-</body>
-</html>
+    
+    </body>
+    
+    </html>

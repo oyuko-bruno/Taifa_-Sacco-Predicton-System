@@ -30,16 +30,13 @@ def predict(request):
 
 
 
-
 # ... (previous code)
 
 # ... (previous code)
 
 import pickle
 
-@login_required
-#@permission_required("auth.change_user", raise_exception=True)
-@permission_required('Taifa_sacco.authentication_customuser')
+
 def loan_prediction(request):
     if request.method == 'GET':
         # Retrieve input values from the form
@@ -116,16 +113,3 @@ def custom_logout(request):
     return redirect('home') 
 
 
-
-from django.http import JsonResponse
-from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
-
-tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-large")
-model = AutoModelForCausalLM.from_pretrained("microsoft/DialoGPT-large")
-chatbot = pipeline("text-generation", model=model, tokenizer=tokenizer)
-
-def chat(request):
-    if request.method == 'POST':
-        user_message = request.POST['message']
-        bot_response = chatbot(user_message)[0]['generated_text']
-        return JsonResponse({'bot_response': bot_response})

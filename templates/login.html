@@ -36,7 +36,19 @@
   
   <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
 </head>
-
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/64479d7131ebfa0fe7fa4aac/1gurru1lr';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 <body>
   <style>
     /* static/css/style.css 
@@ -111,9 +123,9 @@
             </span>
           </a>
           <div class="user_option">
-            <a href="{% url 'authentication:login' %}">
+            <a href="{% url 'home' %}">
               <span>
-                Login
+                Home
               </span>
               <i class="fa fa-user" aria-hidden="true"></i>
             </a>
@@ -126,7 +138,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form method="post" action="{% url 'authentication:login' %}" class="form-signin">
+          <form method="post" action="{% url 'authentication:login' %}" class="form-signin">
+
                 {% csrf_token %}
                 <h2 class="mb-4">Login</h2>
                 {{ form.username }}

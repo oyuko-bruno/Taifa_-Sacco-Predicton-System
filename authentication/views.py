@@ -21,7 +21,7 @@ def register(request):
             messages.success(request, 'Registration successful. You can now log in.')
 
             # Redirect to user_login page with customer_name in the URL
-            return redirect('user_login')
+            return redirect('login')
 
     else:
         form = RegistrationForm()
@@ -61,8 +61,14 @@ def delete_account(request):
         user = request.user
         user.delete()
         messages.success(request, 'Account deleted successfully.')
-        return redirect('registe')  # Redirect to the login page or any other page
+        return redirect('register')  # Redirect to the login page or any other page
 
     return render(request, 'delete_account.html')
 
 
+
+def members(request):
+    return render(request,'members.html')
+
+def services(request):
+    return render(request,'services.html')

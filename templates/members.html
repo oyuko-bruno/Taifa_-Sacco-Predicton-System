@@ -1,5 +1,4 @@
 
-
 {% load  static %}
 <!DOCTYPE html>
 <html>
@@ -15,7 +14,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Taifa Sacco</title>
+  <title>Taifa Sacco Junior account</title>
 
   <!--owl slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
@@ -37,20 +36,22 @@
   
   <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
 </head>
-
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/64479d7131ebfa0fe7fa4aac/1gurru1lr';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 <body>
-  <style>
-    /* static/css/style.css 
 
-.hero_area {
-    background-image: url('{% static "taifa4.PNG" %}');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh; /* Adjust the height as needed 
-}*/
 
-/* Add any additional styles for other elements on the page */
 
   </style>
   <div class="hero_area">
@@ -62,7 +63,7 @@
             <a href="">
               <i class="fa fa-map-marker" aria-hidden="true"></i>
               <span>
-                Address :Nyeri County
+                Taifa Sacco
               </span>
             </a>
             <a href="">
@@ -108,43 +109,150 @@
           </div>
           <a class="navbar-brand" href="index.html">
             <span>
-              Taifa Sacco 
+              
             </span>
           </a>
+
+          <span>
+            
+            <a href="{% url 'authentication:ourservice'%}">Services</a>
+          </span>
+
+          <span>
+           
+            <a href="{% url 'authentication:ourmembers'%}"> Membership</a>
+          </span>
+
+          <span>
+           
+            <a href="{% url 'authentication:user_login' %}"> Our Products</a>
+          </span>
+
           <div class="user_option">
+           
             <a href="{% url 'authentication:user_login' %}">
               <span>
                 Login
               </span>
               <i class="fa fa-user" aria-hidden="true"></i>
             </a>
-            
+           
           </div>
         </nav>
       </div>
     </header>
-    <h5>Update Profile</h5>
 
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+
+
+    <div class="section">
+        <h3>TAIFA JUNIOR ACCOUNT</h3>
+        <p>Home TAIFA JUNIOR ACCOUNT</p>
+        <p>Taifa Sacco offers a junior account in Kenya for children & teenagers, providing parents with a savings platform to put away money for their children’s bright future. It helps you give your child a head start by getting them in the habit of saving from an early age.</p>
+    </div>
+
+    <div class="section">
+        <h2>Features and Benefits</h2>
+        <ul>
+            <li>No opening charges</li>
+            <li>Free internal standing orders</li>
+            <li>School fees cheque at discounted rates</li>
+            <li>Reward for high performers</li>
+            <li>Attractive personal accident cover-PA at Ksh.525 per annum</li>
+            <li>Competitive interest paid on deposits above the set limit</li>
+            <li>Three withdrawals per year</li>
+            <li>Emergency withdrawals at a fee</li>
         </ul>
-    {% endif %}
+    </div>
 
-    <form method="post" action="{% url 'authentication:update_account' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit"  style="display: inline-block;
-        padding: 10px 15px;
-        margin: 5px;
-        text-decoration: none;
-        color:white;
-        background-color: #649713; /* Button color */
-        border-radius: 5px;
-        transition: background-color 0.3s ease;">Update Account</button>
-    </form>
+    <div class="section">
+        <h2>Requirements</h2>
+        <ol>
+            <li>Copy of child’s birth certificate</li>
+            <li>Parent/guardian ID card</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>Services</h2>
+        <ul>
+            <li><a href="#borrow-money" class="cta-button">BORROW-MONEY</a></li>
+            <li><a href="#get-card" class="cta-button">GET CARD</a></li>
+            <li><a href="#get-insured" class="cta-button">GET INSURED</a></li>
+            <li><a href="#open-account" class="cta-button">OPEN AN ACCOUNT</a></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Our Branches</h2>
+        <p>Find our branches <a href="#branches" class="cta-button">here</a>.</p>
+    </div>
+
+    <div class="section">
+        <h2>Start Saving</h2>
+        <p>Begin your savings journey with Taifa Junior Account today!</p>
+        <a href="#start-saving" class="cta-button">START SAVING</a>
+    </div>
+
+    <div class="section">
+        <h2>Latest News</h2>
+        <p>Acquire Plots @ Affordable Price - August 9, 2020</p>
+    </div>
+
+    <div class="section">
+        <h2>Recent Posts</h2>
+        <ul>
+            <li>Chatrandom Video Chat Evaluate</li>
+            <li>Maistorybook Library: We Dont Eat Our Classmates + Updated *friendship Sandwich* Craft</li>
+            <li>What Is Ifetch?</li>
+            <li>A Quantity Of Live Streams Of Killington Ski Resort</li>
+            <li>Wireclub Evaluate</li>
+        </ul>
+    </div>
+
+
+
 
     <section class="info_section layout_padding2">
         <div class="container">
@@ -239,5 +347,7 @@
       
       
     
-</body>
-</html>
+    
+    </body>
+    
+    </html>

@@ -1,6 +1,11 @@
 
 app_name = 'authentication'
 from django.urls import path
+from .views import register, login, update_account, delete_account,services,members
+
+
+app_name = 'authentication'
+from django.urls import path
 from .views import register, user_login, update_account, delete_account
 
 urlpatterns = [
@@ -9,5 +14,6 @@ urlpatterns = [
     path('update_account/', update_account, name='update_account'),
     path('delete_account/', delete_account, name='delete_account'),
     
-    
+    path('services/',services,name='ourservice'),
+    path('members/',members,name='ourmembers'),
 ]
