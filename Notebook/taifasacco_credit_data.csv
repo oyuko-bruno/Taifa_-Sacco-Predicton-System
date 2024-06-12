@@ -7,7 +7,7 @@ Age,Sex,Job,Housing,Saving ,Checking ,Credit ,Duration,Purpose,Risk
 35,male,1,free,NA,NA,9055,36,education,good
 53,male,2,own,quite rich,NA,2835,24,furniture/equipment,good
 35,male,3,rent,little,moderate,6948,36,car,good
-61,male,1,own,rich,NA,3059,12,radio/TV,good
+61,male,1,own,rich,3059,12,radio/TV,good
 28,male,3,own,little,moderate,5234,30,car,bad
 25,female,2,rent,little,moderate,1295,12,car,bad
 24,female,2,rent,little,little,4308,48,business,bad
