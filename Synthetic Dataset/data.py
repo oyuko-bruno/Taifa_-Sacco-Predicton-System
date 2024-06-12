@@ -8,6 +8,7 @@ np.random.seed(42)
 num_samples = 1000
 
 # Generate synthetic data for each column
+#this is so creative
 data = {
     'Collateral': np.random.choice(['yes', 'no'], size=num_samples),
     'Government_Program': np.random.choice(['yes', 'no'], size=num_samples),
