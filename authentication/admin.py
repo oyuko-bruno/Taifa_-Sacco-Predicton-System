@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-# admin.py
+# admin.py admin.py
 from django.contrib import admin
 from .models import CustomUser
 
