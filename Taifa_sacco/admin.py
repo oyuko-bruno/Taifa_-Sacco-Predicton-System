@@ -1,4 +1,5 @@
-# admin.py
+# admin.py 
+#admin.py
 from django.contrib import admin
 from .models import CustomerPrediction
 from .models import LoanPrediction
